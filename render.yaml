@@ -1,11 +1,12 @@
 services:
   - type: web
-    name: AI-Powered-Disease-Recognition-8
+    name: AI-Powered-Disease-Recognition-9
     env: python
     plan: free
     buildCommand: |
       apt-get update && apt-get install -y tesseract-ocr
       pip install -r requirements.txt
     startCommand: streamlit run home.py
+
 
 
