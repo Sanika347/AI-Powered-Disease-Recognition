@@ -1,0 +1,9 @@
+streamlit
+pdf2image
+pytesseract
+pillow
+opencv-python
+numpy
+pandas
+cohere
+python-dotenv
