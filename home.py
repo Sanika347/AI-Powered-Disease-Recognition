@@ -1,3 +1,5 @@
+import pytesseract
+pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
 import streamlit as st
 from PIL import Image
 import pdf2image
@@ -16,9 +18,9 @@ load_dotenv()
 
 
 # For Linux (Render)
-pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
+#pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
 
-st.write("Tesseract path:", pytesseract.pytesseract.tesseract_cmd)
+#st.write("Tesseract path:", pytesseract.pytesseract.tesseract_cmd)
 
 
 # Load environment variables
@@ -167,6 +169,7 @@ if st.button("Send"):
                 st.markdown(f"<div style='background-color: #ffeeba; border-radius: 5px; padding: 0.5em; margin: 0.5em 0;'>{chat}</div>", unsafe_allow_html=True)
     else:
         st.warning("⚠️ Please enter a message.")
+
 
 
 
