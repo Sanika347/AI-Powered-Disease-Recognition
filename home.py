@@ -8,6 +8,9 @@ import cv2
 import numpy as np
 import cohere
 import pytesseract
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 # pytesseract.pytesseract.tesseract_cmd = r"C:/Program Files/Tesseract-OCR/tesseract.exe"
 pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
@@ -17,9 +20,7 @@ pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
 
 # Load environment variables
 
-from dotenv import load_dotenv
-import os
-load_dotenv()
+
 
 # Initialize Cohere client
 cohere_api_key = os.getenv('COHERE_API_KEY')
@@ -163,4 +164,5 @@ if st.button("Send"):
                 st.markdown(f"<div style='background-color: #ffeeba; border-radius: 5px; padding: 0.5em; margin: 0.5em 0;'>{chat}</div>", unsafe_allow_html=True)
     else:
         st.warning("⚠️ Please enter a message.")
+
 
