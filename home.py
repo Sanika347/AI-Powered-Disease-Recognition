@@ -1,9 +1,7 @@
-import pytesseract
-pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
+
 import streamlit as st
 from PIL import Image
 import pdf2image
-import pytesseract
 import re
 import pandas as pd
 import cv2
@@ -14,6 +12,8 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
+import pytesseract
+pytesseract.pytesseract.tesseract_cmd =  r"/usr/bin/tesseract"
 # pytesseract.pytesseract.tesseract_cmd = r"C:/Program Files/Tesseract-OCR/tesseract.exe"
 
 
@@ -169,6 +169,7 @@ if st.button("Send"):
                 st.markdown(f"<div style='background-color: #ffeeba; border-radius: 5px; padding: 0.5em; margin: 0.5em 0;'>{chat}</div>", unsafe_allow_html=True)
     else:
         st.warning("⚠️ Please enter a message.")
+
 
 
 
