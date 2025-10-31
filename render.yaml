@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: ai-powered-disease-recognition
+    env: python
+    buildCommand: ./setup.sh
+    startCommand: streamlit run home.py --server.port 10000 --server.address 0.0.0.0
+    envVars:
+      - key: COHERE_API_KEY
+        sync: false
