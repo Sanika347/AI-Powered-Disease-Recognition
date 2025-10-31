@@ -1,9 +1,10 @@
 services:
   - type: web
-    name: disease-recognition-app
+    name: AI-Powered-Disease-Recognition
     env: python
     plan: free
     buildCommand: |
       apt-get update && apt-get install -y tesseract-ocr
       pip install -r requirements.txt
     startCommand: streamlit run home.py
+
