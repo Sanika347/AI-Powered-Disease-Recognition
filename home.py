@@ -1,4 +1,4 @@
-
+import os
 import streamlit as st
 from PIL import Image
 import pdf2image
@@ -9,11 +9,16 @@ import numpy as np
 import cohere
 import pytesseract
 from dotenv import load_dotenv
-import os
-load_dotenv()
-
+import shutil
 import pytesseract
-pytesseract.pytesseract.tesseract_cmd =  r"/usr/local/bin/tesseract"
+
+t_path = shutil.which("tesseract")
+if t_path:
+    pytesseract.pytesseract.tesseract_cmd = t_path
+else:
+    raise RuntimeError("tesseract binary not found on PATH")
+
+#pytesseract.pytesseract.tesseract_cmd =  r"/usr/local/bin/tesseract"
 #pytesseract.pytesseract.tesseract_cmd = r"tesseract-ocr-w64-setup-5.5.0.20241111.exe"
 
 
@@ -169,6 +174,7 @@ if st.button("Send"):
                 st.markdown(f"<div style='background-color: #ffeeba; border-radius: 5px; padding: 0.5em; margin: 0.5em 0;'>{chat}</div>", unsafe_allow_html=True)
     else:
         st.warning("⚠️ Please enter a message.")
+
 
 
 
