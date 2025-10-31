@@ -13,7 +13,7 @@ import os
 load_dotenv()
 
 import pytesseract
-pytesseract.pytesseract.tesseract_cmd =  r"/usr/bin/tesseract"
+pytesseract.pytesseract.tesseract_cmd =  r"/usr/local/bin/tesseract"
 #pytesseract.pytesseract.tesseract_cmd = r"tesseract-ocr-w64-setup-5.5.0.20241111.exe"
 
 
@@ -169,6 +169,7 @@ if st.button("Send"):
                 st.markdown(f"<div style='background-color: #ffeeba; border-radius: 5px; padding: 0.5em; margin: 0.5em 0;'>{chat}</div>", unsafe_allow_html=True)
     else:
         st.warning("⚠️ Please enter a message.")
+
 
 
 
