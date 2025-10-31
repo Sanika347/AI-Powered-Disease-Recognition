@@ -1,5 +1,6 @@
 tesseract-ocr
 poppler-utils
-apt-get install tesseract-ocr poppler-utils -y
+
+
 
 
