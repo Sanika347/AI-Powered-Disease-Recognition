@@ -2,8 +2,9 @@ streamlit
 pdf2image
 pytesseract
 pillow
-opencv-python
+opencv-python-headless
 numpy
 pandas
 cohere
 python-dotenv
+
