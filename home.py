@@ -12,25 +12,14 @@ from dotenv import load_dotenv
 import shutil
 import pytesseract
 import shutil, subprocess
-t_path = shutil.which("tesseract")
-if t_path:
-    pytesseract.pytesseract.tesseract_cmd = t_path
-    try:
-        ver = subprocess.run([t_path, '--version'], capture_output=True, text=True, check=True).stdout.splitlines()[0]
-    except Exception:
-        ver = "unknown"
-    st.write(f"Tesseract found: {t_path} ({ver})")
+
+
+if os.environ.get("RENDER"):
+    pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
 else:
-    st.error("Tesseract binary not found on PATH. Install tesseract-ocr (see README).")
-    st.stop()
-#pytesseract.pytesseract.tesseract_cmd =  r"/usr/local/bin/tesseract"
-#pytesseract.pytesseract.tesseract_cmd = r"tesseract-ocr-w64-setup-5.5.0.20241111.exe"
+    pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 
-# For Linux (Render)
-#pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
-
-#st.write("Tesseract path:", pytesseract.pytesseract.tesseract_cmd)
 
 
 # Load environment variables
@@ -179,6 +168,7 @@ if st.button("Send"):
                 st.markdown(f"<div style='background-color: #ffeeba; border-radius: 5px; padding: 0.5em; margin: 0.5em 0;'>{chat}</div>", unsafe_allow_html=True)
     else:
         st.warning("⚠️ Please enter a message.")
+
 
 
 
