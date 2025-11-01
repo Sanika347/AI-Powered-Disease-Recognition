@@ -27,3 +27,7 @@ You can install the required packages using pip:
 
 ```bash
 pip install streamlit Pillow pdf2image pytesseract opencv-python numpy pandas cohere python-dotenv
+
+
+
+Deployed Link:https://sanika347.github.io/AI-Powered-Disease-Recognition/
