@@ -1,40 +1,20 @@
-# Dockerfile - tuned for Streamlit + Tesseract + Poppler
-FROM python:3.13-slim
+# Use an official Python image
+FROM python:3.10-slim
 
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    DEBIAN_FRONTEND=noninteractive
+# Install system dependencies
+RUN apt-get update && apt-get install -y tesseract-ocr libtesseract-dev libleptonica-dev
 
-# Install tesseract, poppler and OS deps for Pillow/OpenCV
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    tesseract-ocr \
-    tesseract-ocr-eng \
-    poppler-utils \
-    libtesseract-dev \
-    libleptonica-dev \
-    libjpeg-dev \
-    zlib1g-dev \
-    libgl1 \
-    libglib2.0-0 \
-    libsm6 \
-    libxrender1 \
-    libxext6 \
- && rm -rf /var/lib/apt/lists/*
-
+# Set working directory
 WORKDIR /app
 
-# Copy and install Python deps first for caching
-COPY requirements.txt /app/
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy app
+# Copy project files
 COPY . /app
 
-# Make the start script executable
-RUN chmod +x /app/start.sh
+# Install Python packages
+RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 8501
+# Expose port (Render uses $PORT)
+EXPOSE 10000
 
-# Entrypoint
-CMD ["/app/start.sh"]
+# Run Streamlit
+CMD ["streamlit", "run", "home.py", "--server.port", "10000", "--server.address", "0.0.0.0"]
